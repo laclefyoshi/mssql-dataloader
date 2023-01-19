@@ -44,6 +44,13 @@ to quickly create a Cobra application.`,
 	// Run: func(cmd *cobra.Command, args []string) { },
 }
 
+var (  // global flags
+       server string
+       database string
+       user string
+       password string
+)
+
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
@@ -58,7 +65,12 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.mssql-dataloader.yaml)")
+	rootCmd.PersistentFlags().StringVarP(&server, "server", "s", "", "server name (FQDN)")
+	rootCmd.PersistentFlags().StringVarP(&database, "database", "d", "", "database name")
+	rootCmd.MarkFlagsRequiredTogether("server", "database")
+	rootCmd.PersistentFlags().StringVarP(&user, "user", "u", "", "user name")
+	rootCmd.PersistentFlags().StringVarP(&user, "password", "p", "", "password")
+	rootCmd.MarkFlagsRequiredTogether("user", "password")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
