@@ -16,7 +16,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"net/url"
 
 	"github.com/spf13/cobra"
 	mssql "github.com/microsoft/go-mssqldb"
@@ -83,7 +82,7 @@ func readDataset() {
 	}
 	defer fd.Close()
 	// open database
-	db := openSQL()
+	db := openSQL(server, database, user, password)
 	// read dataset
 	for start, next := range indexp {
 		p := io.NewSectionReader(fd, int64(start), int64(next - start))
@@ -145,24 +144,6 @@ func readDataset() {
 		// load
 		loadSQL(db, &pages)
 	}
-}
-
-func openSQL() *sql.DB {
-	query := url.Values{}
-	query.Add("database", database)
-	query.Add("connection timeout", "0")
-	connStr := &url.URL{
-		Scheme: "sqlserver",
-		Host: fmt.Sprintf("%s:%d", server, 1433),
-		User: url.UserPassword(user, password),
-		RawQuery: query.Encode(),
-	}
-	db, err := sql.Open("sqlserver", connStr.String())
-	if err != nil {
-		log.Fatal(err)
-	}
-	return db
-
 }
 
 func loadSQL(db *sql.DB, pages *Pages) {
