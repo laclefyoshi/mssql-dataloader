@@ -24,13 +24,8 @@ import (
 // redirectCmd represents the redirect command
 var redirectCmd = &cobra.Command{
 	Use:   "redirect",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: " load wikipedia redirect data",
+	Long: `.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("wikipedia redirect called")
 		readRedirectDataset()
@@ -105,7 +100,6 @@ func readRedirectDataset() {
         }
 }
 
-
 func loadRedirectSQL(db *sql.DB, pairs *Pairs) {
 	/*
 	CREATE SCHEMA wikipedia;
@@ -146,6 +140,7 @@ func loadRedirectSQL(db *sql.DB, pairs *Pairs) {
 	}
 }
 
+
 func init() {
 	wikipediaCmd.AddCommand(redirectCmd)
 
@@ -154,7 +149,7 @@ func init() {
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
 	// redirectCmd.PersistentFlags().String("foo", "", "A help for foo")
-	redirectCmd.PersistentFlags().StringVarP(&redirectdataset, "dataset", "", "", "dataset (xml.bz2)")
+	redirectCmd.PersistentFlags().StringVarP(&redirectdataset, "dataset", "", "", "dataset (sql.gz)")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
