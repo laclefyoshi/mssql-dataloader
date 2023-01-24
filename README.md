@@ -1,6 +1,6 @@
 # MSSQL Data Loader
 
-## Wikipedi
+## Wikipedia
 
 All data dumps of Wikipedia can be downloaded from [here](https://dumps.wikimedia.org/backup-index.html).
 
