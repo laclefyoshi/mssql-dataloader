@@ -69,7 +69,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&database, "database", "d", "", "database name")
 	rootCmd.MarkFlagsRequiredTogether("server", "database")
 	rootCmd.PersistentFlags().StringVarP(&user, "user", "u", "", "user name")
-	rootCmd.PersistentFlags().StringVarP(&user, "password", "p", "", "password")
+	rootCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "password")
 	rootCmd.MarkFlagsRequiredTogether("user", "password")
 
 	// Cobra also supports local flags, which will only run
