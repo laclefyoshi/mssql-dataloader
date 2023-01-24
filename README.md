@@ -8,8 +8,8 @@ All data dumps of Wikipedia can be downloaded from [here](https://dumps.wikimedi
 
 Required files
 
-    * <lang>wiki-<yyyymmdd>-pages-articles-multistream.xml.bz2 
-    * <lang>wiki-<yyyymmdd>-pages-articles-multistream-index.txt.bz2 
+  * <lang>wiki-<yyyymmdd>-pages-articles-multistream.xml.bz2 
+  * <lang>wiki-<yyyymmdd>-pages-articles-multistream-index.txt.bz2 
 
 ```
 ./mssql-dataloader wikipedia \
@@ -25,7 +25,7 @@ Required files
 
 Required files
 
-    * <lang>wiki-<yyyymmdd>-redirect.sql.gz
+  * <lang>wiki-<yyyymmdd>-redirect.sql.gz
 
 ```
 ./mssql-dataloader wikipedia redirect \
